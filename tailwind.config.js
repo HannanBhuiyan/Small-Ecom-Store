@@ -11,7 +11,7 @@ export default {
     extend: {
       colors: {
         'common-color' : '#3BB77E',
-        'second-color': '#e9ecef',
+        'second-color': '#F8F9FA',
         'title-color': '#3c3e41',
         'para-color': '#696f79'
       }

@@ -26,20 +26,26 @@ const Header = () => {
                             <div className="header_menu">
                                 <ul className="flex">
                                     <li>
-                                        <NavLink to="/" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-8 rounded-md' : 'font-medium text-[17px] py-3 px-8 rounded-md'} >Home</NavLink>
+                                        <NavLink to="/" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : 'font-medium text-[17px] py-3 px-7 rounded-md'} >Home</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/about" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-8 rounded-md' : 'font-medium text-[17px] py-3 px-8 rounded-md'} >About</NavLink>
+                                        <NavLink to="/about" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : 'font-medium text-[17px] py-3 px-7 rounded-md'} >About</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/product" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-8 rounded-md' : 'font-medium text-[17px] py-3 px-8 rounded-md'} >Product</NavLink>
+                                        <NavLink to="/product" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : 'font-medium text-[17px] py-3 px-7 rounded-md'} >Product</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/contact" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-8 rounded-md' : 'font-medium text-[17px] py-3 px-8 rounded-md'} >Contact</NavLink>
+                                        <NavLink to="/contact" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : 'font-medium text-[17px] py-3 px-7 rounded-md'} >Contact</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/cart" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-8 rounded-md' : ' font-medium text-[17px] py-3 px-8 rounded-md'} >
-                                            <FontAwesomeIcon icon={faCartShopping} />
+                                        <NavLink to="/login" className=" hover:bg-black transition duration-500 font-medium bg-common-color text-[17px] py-[10px] text-white px-7 rounded-md " >Login</NavLink>
+                                    </li>
+                                    <li className="flex items-center">
+                                        <NavLink to="/cart" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : ' font-medium text-[17px] py-3 px-7 rounded-md'} >
+                                           <div className="flex relative">
+                                            <span className=" absolute top-[-17px] right-[-14px] bg-common-color w-[25px] h-[25px] text-white text-center rounded-[30px] text-[12px] leading-[25px] " >9+</span>
+                                           <FontAwesomeIcon icon={faCartShopping} />
+                                           </div>
                                         </NavLink>
                                     </li>
                                 </ul>
