@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ProductSidebar = () => {
     return(
         <>
-            <div className="product_sidebar_inner">
+            <div className="product_sidebar_inner ">
                 <div className="search mb-[30px]">
                     <input type="text" className="w-full px-5 py-3 font-poppins text-[16px] rounded-md focus:outline-none focus:border-common-color border-2 focus:border-2 " placeholder="Search" />
                 </div>
@@ -39,12 +39,12 @@ const ProductSidebar = () => {
                 </div>
                 <div className="colors mb-[30px]">
                     <h2 className="text-[22px] text-title-color font-poppins mb-3 font-semibold" >Colors</h2>
-                    <ul className="flex">
-                        <li className="w-[35px] h-[35px] bg-red-600 rounded-full mr-[15px]" ></li>
-                        <li className="w-[35px] h-[35px] bg-yellow-600 rounded-full mr-[15px]" ></li>
-                        <li className="w-[35px] h-[35px] bg-indigo-600 rounded-full mr-[15px]" ></li>
-                        <li className="w-[35px] h-[35px] bg-green-600 rounded-full mr-[15px]" ></li>
-                        <li className="w-[35px] h-[35px] bg-black rounded-full mr-[15px]" ></li>
+                    <ul className="flex max-[1279px]:flex-wrap">
+                        <li className="w-[35px] h-[35px] bg-red-600 rounded-full mr-[15px] max-[1279px]:mb-2 " ></li>
+                        <li className="w-[35px] h-[35px] bg-yellow-600 rounded-full mr-[15px] max-[1279px]:mb-2 " ></li>
+                        <li className="w-[35px] h-[35px] bg-indigo-600 rounded-full mr-[15px] max-[1279px]:mb-2 " ></li>
+                        <li className="w-[35px] h-[35px] bg-green-600 rounded-full mr-[15px] max-[1279px]:mb-2 " ></li>
+                        <li className="w-[35px] h-[35px] bg-black rounded-full mr-[15px] max-[1279px]:mb-2 " ></li>
                     </ul>
                 </div>
                 <div className="price_range mb-[30px]">

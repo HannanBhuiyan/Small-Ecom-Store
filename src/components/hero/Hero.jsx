@@ -1,9 +1,10 @@
 import React from "react";
-import banner_img from '../../assets/images/banner.jpg'
+import banner_img from '../../assets/images/banner.jpg'   
 
 const Hero = ({ sub_title, title }) => {
-
-
+     
+   
+      
     return(
         <>
             <div className="hero_section mt-[150px] max-lg:mt-[100px] mb-[100px]">

@@ -6,16 +6,16 @@ const ProductListView = () => {
     return(
         <> 
             <Link to="/product">
-                <div className="feature_product_ite flex rounded-md bg-second-color m-3 p-6 max-xl:p-[20px]">
-                    <div className="list_pro_img relative w-4/12 mr-8">
+                <div className="feature_product_ite flex max-md:flex-wrap rounded-md bg-second-color m-3 p-6 max-xl:p-[20px]">
+                    <div className="list_pro_img relative w-4/12 mr-8 max-md:w-full">
                         <div className="img_box overflow-hidden">
-                            <img className="w-full hover:scale-110 transition duration-300 max-sm:h-full max-sm:object-fill  " src={watch_img} alt="" />
+                            <img className="w-full hover:scale-110 transition duration-300 max-sm:h-full max-sm:object-fill max-md:mb-3 " src={watch_img} alt="" />
                         </div> 
                         <div className="category absolute max-[767px]:top-[40px] max-[767px]:right-[40px] top-[30px] right-[30px] bg-white px-8 py-1 rounded-[30px] font-poppins ">
                             <span>Watch</span>
                         </div>
                     </div>
-                    <div className="list_pro_content w-7/12">
+                    <div className="list_pro_content w-7/12 max-md:w-full">
                         <div className="">
                             <h5 className=" text-[22px] font-semibold font-poppins " >Watch XXX</h5> 
                             <h6 className=" text-[19px] font-medium font-poppins py-2" >$40000</h6>

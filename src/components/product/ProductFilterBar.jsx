@@ -6,8 +6,8 @@ import { faBorderNone, faList } from "@fortawesome/free-solid-svg-icons";
 const ProductFilterBar = () => {
     return(
         <>
-            <div className="product_filter_bar_inner items-center flex justify-between px-3 pb-6">
-                <div className="grid_box flex items-center ">
+            <div className="product_filter_bar_inner items-center flex max-sm:flex-wrap justify-between px-3 pb-6">
+                <div className="grid_box flex items-center max-sm:mb-6">
                     <div className="grid_view bg-second-color text-center leading-[44px] rounded-md mx-auto w-[40px] h-[40px] mr-4">
                         <button className="grid-active bg-common-color w-full h-full rounded-md text-white" >
                             <FontAwesomeIcon className="text-[20px]" icon={faBorderNone} />
