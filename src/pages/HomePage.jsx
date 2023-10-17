@@ -7,7 +7,7 @@ import ClientLogo from "../components/clientLogo/ClientLogo";
 const HomePage = () => {
     return(
         <>
-            <Hero />  
+            <Hero sub_title="WELCOME TO" title="ShopBox Store"  />  
             <FeatureProduct/> 
             <OurProcess /> 
             <ClientLogo />
