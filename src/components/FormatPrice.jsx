@@ -3,7 +3,7 @@ const FormatPrict = ({price}) => {
     { 
         style: 'currency', 
         currency: 'BDT',
-        maximumFractionDigits: 2
+        maximumFractionDigits: 2, 
     }
     ).format(price / 100)
 }

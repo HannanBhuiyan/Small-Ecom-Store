@@ -3,7 +3,10 @@ export const initialState = {
     isLoading: true,
     isError: false,
     products: [],
-    featureProducts: []
+    featureProducts: [],
+    isSingleLoading: false,
+    isSingleError: false,
+    singleProduct: {}
 }
 
 export const reduce = (state, action) => {
@@ -27,6 +30,24 @@ export const reduce = (state, action) => {
                 ...state,
                 isLoading: false,
                 isError: true
+            }
+        case "GET_SINGLE_PRODUCT":
+            return {
+                ...state,
+                isSingleLoading: false,
+                isSingleError: false,
+                singleProduct: action.payload
+            }
+        case "SET_SINGLE_LOADING":
+            return {
+                ...state,
+                isSingleLoading: true,
+            }
+        case "SET_SINGLE_ERROR":
+            return {
+                ...state,
+                isSingleLoading: false,
+                isSingleError: true,
             }
         default:
             return state;

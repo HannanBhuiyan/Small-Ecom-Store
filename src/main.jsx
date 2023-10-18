@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { ProductProvider } from './context/ProductContext.jsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ProductProvider>
     <App />

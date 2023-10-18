@@ -14,6 +14,7 @@ const ProductGridView = ({ isLoading, products }) => {
         {
             products.map((product, index) => {
                 const { id, name, price, image, category } = product
+                console.log(`id => ${id} name = ${name} and price = ${price}`)
                 return(
                     <Link to={`/single-product/${id}`} key={index}>
                         <div className="feature_product_ite rounded-md bg-second-color m-3 p-6 max-xl:p-[20px]  relative">
