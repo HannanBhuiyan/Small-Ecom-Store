@@ -9,8 +9,10 @@ const ProductContent =  createContext()
 
 const ProductProvider = ({ children }) => {
 
+
     const [state, dispatch] = useReducer(reduce, initialState)
 
+    // call api for get product
     const getProducts = async () => {
         dispatch({ type: "SET_LOADING" })
         try {
@@ -25,7 +27,6 @@ const ProductProvider = ({ children }) => {
             })
         }
     }
-
     useEffect(() => {
         getProducts()
     },[])

@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import ProductListView from "./ProductListView";
 import ProductSidebar from "./ProductSidebar";
 import ProductFilterBar from "./ProductFilterBar";
+import { useProductContext } from "../../context/ProductContext";
 
 const Product = () => {
+
+    const { isLoading, products } = useProductContext()
+
     return(
         <>
             <div className="product_page_section">
@@ -19,14 +23,7 @@ const Product = () => {
                                 <ProductFilterBar /> 
                             </div>
                             <div className="grid_view_product grid grid-cols-3 max-[1279px]:grid-cols-2 max-sm:grid-cols-1 ">
-                                <ProductGridView />  
-                                <ProductGridView />  
-                                <ProductGridView />  
-                                <ProductGridView />  
-                                <ProductGridView />  
-                                <ProductGridView />  
-                                <ProductGridView />  
-                                <ProductGridView />  
+                                <ProductGridView products={products} isLoading={isLoading} />
                             </div>
                             {/* <div className="list_view_pro grid grid-cols-1 ">
                                 <ProductListView />
