@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FormatPrict from "../FormatPrice";
+import FormatPrict from "../Utils/FormatPrice";
 
 
 const ProductGridView = ({ isLoading, products }) => {
@@ -14,15 +14,15 @@ const ProductGridView = ({ isLoading, products }) => {
         {
             products.map((product, index) => {
                 const { id, name, price, image, category } = product
-                console.log(`id => ${id} name = ${name} and price = ${price}`)
                 return(
+                   
                     <Link to={`/single-product/${id}`} key={index}>
                         <div className="feature_product_ite rounded-md bg-second-color m-3 p-6 max-xl:p-[20px]  relative">
                             <div className="img_box overflow-hidden">
                                 <img className="w-full h-[200px] max-[767px]:h-[200px] hover:scale-110 transition duration-300 max-sm:h-full max-sm:object-fill  " src={image} alt="" />
                             </div>
                             <div className="flex justify-between pt-[15px] ">
-                                <h5 className=" text-[19px] font-medium font-poppins " >{name}</h5> 
+                                <h5 className=" text-[19px] font-medium font-poppins " > {name}</h5> 
                                 <h6 className=" text-[19px] font-medium font-poppins " > <FormatPrict price={price} />  </h6>
                             </div>
                             <div className="text-center bg-common-color text-white py-[7px] rounded-md mt-4 mb-[-10px] hover:bg-black transition duration-500 ">
@@ -33,6 +33,7 @@ const ProductGridView = ({ isLoading, products }) => {
                             </div>
                         </div> 
                     </Link> 
+                   
                 )
             })
         }

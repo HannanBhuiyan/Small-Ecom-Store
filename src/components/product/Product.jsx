@@ -6,6 +6,8 @@ import ProductSidebar from "./ProductSidebar";
 import ProductFilterBar from "./ProductFilterBar";
 import { useProductContext } from "../../context/ProductContext";
 
+
+
 const Product = () => {
 
     const { isLoading, products } = useProductContext()

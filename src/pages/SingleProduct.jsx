@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../context/ProductContext";
-import FormatPrice from '../components/FormatPrice'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import MyImage from "../components/MyImage";
+import FormatPrice from '../components/Utils/FormatPrice'
+
+
+import MyImage from "../components/Utils/MyImage"; 
+import Star from "../components/Utils/Star";
+import Color from "../components/Utils/Color";
+import CartQtyToggle from "../components/Utils/CartQtyToggle";
+
 const API = "https://api.pujakaitem.com/api/products"
+
 
 
 
@@ -13,6 +18,7 @@ const SingleProduct = () => {
 
     const { getSingleProduct , singleProduct, isSingleLoading } = useProductContext()
     const { productId } = useParams()
+
     const {
         name,
         company,
@@ -22,8 +28,11 @@ const SingleProduct = () => {
         stars,
         reviews,
         image,
-        description
+        description,
+        colors
     } = singleProduct
+    
+     
      
     useEffect(() => {
         getSingleProduct(`${API}?id=${productId}`)
@@ -32,6 +41,8 @@ const SingleProduct = () => {
     if(isSingleLoading) {
         return <h2>Loading.....</h2>
     }
+
+   
 
     return(
         <>
@@ -46,25 +57,15 @@ const SingleProduct = () => {
                                 : 
                                 <span className="text-[#f74b81] py-[7px] px-[12px] bg-[#fde0e9] inline-block rounded-md text-[14px] font-poppins font-medium " >Sale Off</span>
                                 } 
-                                <h2 className="text-[40px] font-poppins font-semibold text-title-color my-[10px] " >{name}</h2>
-                                <p>{reviews}</p>
+                                <h3 className="text-[34px] font-poppins font-semibold mt-4 " >{name}</h3>
+                                <Star stars={stars} reviews={reviews} /> 
                                 <h2 className="text-[50px] font-poppins font-bold text-common-color my-[10px] " ><FormatPrice price={price} /> </h2>
-                                <p className="text-[17px] font-poppins text-para-color mb-[10px] " >{description}</p>
+                                <p className="text-[17px] font-poppins text-para-color mb-[12px] " >{description}</p>
                                 <p className="text-[20px] font-poppins font-medium text-title-color " >Brand: {company}</p>
-                                <div className="product_qty flex items-center mt-[30px] ">
-                                    <div className="count flex items-center border-common-color border-2 rounded-md ">
-                                        <div className="count_box w-[90px] text-center font-poppins font-medium text-[20px] ">
-                                            <span>1</span>
-                                        </div>
-                                        <div className="logic_box pr-3 py-1">
-                                            <div className="increment cursor-pointer hover:text-common-color duration-300 "> <FontAwesomeIcon icon={faChevronUp} /> </div>
-                                            <div className="decrement cursor-pointer hover:text-common-color duration-300"> <FontAwesomeIcon icon={faChevronDown} /></div>
-                                        </div> 
-                                    </div>
-                                    <div className="add_to_cart  flex ml-[30px] font-poppins text-white ">
-                                        <button className="bg-common-color rounded-md  px-8 py-[18px] text-[17px] hover:bg-black duration-500 "> <FontAwesomeIcon className="pr-2" icon={faCartShopping} /> Add To Cart</button>
-                                    </div>
-                                </div>
+
+                                <Color singleProduct={singleProduct} /> 
+
+                                <CartQtyToggle singleProduct={singleProduct} /> 
                             </div>
                         </div>
                     </div>

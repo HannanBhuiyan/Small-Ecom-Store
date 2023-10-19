@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext";
-import FormatPrict from "../FormatPrice";
+import FormatPrict from "../Utils/FormatPrice";
 
 const FeatureProduct = () => {
 
