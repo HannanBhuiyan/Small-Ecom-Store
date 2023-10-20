@@ -6,7 +6,7 @@ export const initialState = {
     featureProducts: [],
     isSingleLoading: false,
     isSingleError: false,
-    singleProduct: {}
+    singleProduct: {},
 }
 
 export const reduce = (state, action) => {
@@ -48,7 +48,7 @@ export const reduce = (state, action) => {
                 ...state,
                 isSingleLoading: false,
                 isSingleError: true,
-            }
+            } 
         default:
             return state;
     }

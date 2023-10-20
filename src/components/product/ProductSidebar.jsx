@@ -1,31 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"; 
+import { useFilterContext } from "../../context/FilterProductContext";
 
 const ProductSidebar = () => {
+
+    const {filters: { text },  all_products  , updateFilterProduct  } = useFilterContext()
+
+    // get all category
+    let categoryArray = []
+    for(let cat of all_products){
+       categoryArray.push(cat.category)
+    }
+    // get all unique category
+    let newCategory = ["all", ...new Set(categoryArray) ]
+
+    // capitalize function
+    const capitalize = (category) => {
+        let lower = category.toLowerCase()
+        return category.charAt(0).toUpperCase() + lower.slice(1)
+    }
+ 
+
     return(
         <>
             <div className="product_sidebar_inner ">
                 <div className="search mb-[30px]">
-                    <input type="text" className="w-full px-5 py-3 font-poppins text-[16px] rounded-md focus:outline-none focus:border-common-color border-2 focus:border-2 " placeholder="Search" />
+                    <input 
+                    name="text"
+                    value={text}
+                    onChange={updateFilterProduct}
+                    type="text" 
+                    className="w-full px-5 py-3 font-poppins text-[16px] rounded-md focus:outline-none focus:border-common-color border-2 focus:border-2 " placeholder="Product name" />
                 </div>
                 <div className="category_list">
                     <h2 className="text-[22px] text-title-color font-poppins mb-3 font-semibold " >Category</h2>
                     <ul>
-                        <li className="text-[16px] font-poppins mb-2 " >
-                            <Link>Mobile</Link>
-                        </li>
-                        <li className="text-[16px] font-poppins mb-2 " >
-                            <Link>Laptop</Link>
-                        </li>
-                        <li className="text-[16px] font-poppins mb-2 " >
-                            <Link>Computer</Link>
-                        </li>
-                        <li className="text-[16px] font-poppins mb-2 " >
-                            <Link>Accessories</Link>
-                        </li>
-                        <li className="text-[16px] font-poppins mb-2 " >
-                            <Link>Watch</Link>
-                        </li>
+                        {
+                            newCategory.map((CurrentEle, index) => { 
+                                return(
+                                    <li key={index} className="text-[16px] font-poppins mb-2 " >
+                                        <button
+                                        name="category"
+                                        value={CurrentEle}
+                                        type="button"
+                                        onClick={updateFilterProduct}>
+                                            {capitalize(CurrentEle)}
+                                        </button>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
                 <div className="company">

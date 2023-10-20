@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FormatPrict from "../Utils/FormatPrice";
+import { useFilterContext } from "../../context/FilterProductContext";
 
 
-const ProductGridView = ({ isLoading, products }) => {
-
+const ProductGridView = ({ filter_products, isLoading }) => {
+ 
     if(isLoading){
         return <div> <h2 className="text-[34px] font-poppins font-medium" >Loading.......</h2> </div>
     }
@@ -12,7 +13,7 @@ const ProductGridView = ({ isLoading, products }) => {
     return(
         <>
         {
-            products.map((product, index) => {
+            filter_products.map((product, index) => {
                 const { id, name, price, image, category } = product
                 return(
                    

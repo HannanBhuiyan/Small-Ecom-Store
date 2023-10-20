@@ -8,7 +8,7 @@ const MyImage = ({ imgs = [{ url: "" }] }) => {
         <>
             <div className="single_product_image_slider ">
                 <div className="image_box px-12 overflow-hidden">
-                    <div className="thumbnail overflow-hidden ">
+                    <div className="thumbnail overflow-hidden rounded-md ">
                         <img className="w-full h-[440px] cursor-pointer hover:scale-110 duration-500 rounded-md" src={mainImage.url} alt="image" /> 
                     </div>
                 </div>
