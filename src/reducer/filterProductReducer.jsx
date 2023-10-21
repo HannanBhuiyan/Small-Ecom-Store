@@ -7,7 +7,7 @@ export const initialState = {
     sort_value: 'featured',
     filters: {
         text: "",
-        category: "all"
+        category: "all",
     }
 }
 
@@ -64,9 +64,7 @@ export const reduce = (state, action) => {
             }
 
         case "UPDATE_FILTER_PRODUCT_VALUE":
-            const { name, value } = action.payload
-            console.log(name)
-            console.log(value)
+            const { name, value } = action.payload 
             return {
                 ...state,
                 filters: {
@@ -83,23 +81,35 @@ export const reduce = (state, action) => {
                 tempSearchProduct = tempSearchProduct.filter((product) => {
                     return product.name.toLowerCase().includes(text)
                 })
-            }else if(category) {
-               if(category === 'all'){
-                    tempSearchProduct = [...all_products]
-               }else {
-                   tempSearchProduct = tempSearchProduct.filter((product) => product.category === category )
-               }
-            }else {
-
-                tempSearchProduct = all_products
             }
-
+            if(category !== "all") {
+                tempSearchProduct = tempSearchProduct.filter((product) => product.category === category)
+            }
+              
         return {
             ...state,
             filter_products: tempSearchProduct
-        }
+            }
+        case "COMPANY_SELECT_VALUE":
+            let componyName;
+            const company  = action.payload
+            componyName = [...state.all_products]
 
-
+            if(company !== "all"){
+                componyName = componyName.filter((curElem) => curElem.company === company)
+            }
+            return {
+                ...state,
+                filter_products: componyName
+            }
+        case  "COLOR_BY_PRODUCT":
+            let colorFilerProduct;
+            let productColor  = [...state.all_products]
+            colorFilerProduct = productColor.filter((curElem) => curElem.colors.includes(action.payload) )
+            return {
+                ...state,
+                filter_products: colorFilerProduct
+            }
         default:
             return state;
     }

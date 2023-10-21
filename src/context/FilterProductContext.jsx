@@ -24,6 +24,19 @@ const FilterProductProvide = ({children}) => {
         dispatch({ type: "GET_SELECT_VALUE", payload: val})
     }
 
+
+    // sort company value
+    const getCompanySelectValue = (e) => {
+        let val = e.target.value
+        dispatch({ type: "COMPANY_SELECT_VALUE", payload: val })
+    }
+
+    // product color filter settings
+    const colorHandler = (color) => {
+        dispatch({ type: "COLOR_BY_PRODUCT", payload: color })
+    }
+
+
     // get search value
     const updateFilterProduct = (e) => {
         e.preventDefault()
@@ -43,7 +56,8 @@ const FilterProductProvide = ({children}) => {
     },[products])
 
 
-    return <FilterProductContext.Provider value={{...state, updateFilterProduct, handelGridView, handelListView, getSelectValue}} >
+    return <FilterProductContext.Provider value={{...state, 
+        colorHandler, getCompanySelectValue, updateFilterProduct, handelGridView, handelListView, getSelectValue}} >
         { children }
     </FilterProductContext.Provider>
 
