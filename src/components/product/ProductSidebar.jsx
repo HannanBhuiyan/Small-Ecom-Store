@@ -1,11 +1,15 @@
 import React from "react"; 
 import { useFilterContext } from "../../context/FilterProductContext";
 import { FaCheck } from "react-icons/fa6";
+import FormatPrice  from '../Utils/FormatPrice'
 
 const ProductSidebar = () => {
 
-    const {filters: { text, company, category, color },  all_products  , updateFilterProduct, } = useFilterContext()
-
+    const {
+        filters: { text, category, color, price, maxPrice, minPrice },  
+        all_products, 
+        updateFilterProduct, 
+        clearFilter } = useFilterContext()
 
     const getUniqueData = (data, attr) => {
         let newVal = data.map((curElem) => {
@@ -115,10 +119,17 @@ const ProductSidebar = () => {
                 </div>
                 <div className="price_range mb-[30px]">
                 <   h2 className="text-[22px] text-title-color font-poppins mb-2 font-semibold" >Price</h2>
-                    <input type="range" className="w-full" />
+                    <p><FormatPrice price={price} />  </p>
+                    <input type="range" 
+                    name="price" 
+                    value={price} 
+                    max={maxPrice} 
+                    min={minPrice} 
+                    onChange={updateFilterProduct} 
+                    className="w-full" />
                 </div>
                 <div className="clearb_btn mb-[30px] text-center">
-                    <button className="bg-common-color px-8 py-4 font-poppins text-white font-medium rounded-md" >CLEAR FILTER</button>
+                    <button onClick={clearFilter} className="bg-common-color hover:bg-black duration-300 px-8 py-4 font-poppins text-white font-medium rounded-md" >CLEAR FILTER</button>
                 </div>
            </div>
         </>

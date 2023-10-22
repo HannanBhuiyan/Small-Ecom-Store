@@ -24,6 +24,11 @@ const FilterProductProvide = ({children}) => {
         dispatch({ type: "GET_SELECT_VALUE", payload: val})
     }
 
+    // clear filter
+    const clearFilter = () => {
+        dispatch({ type: "CLEAR_FILER" })
+    }
+
 
     // get search value
     const updateFilterProduct = (e) => {
@@ -46,7 +51,14 @@ const FilterProductProvide = ({children}) => {
     },[products])
 
 
-    return <FilterProductContext.Provider value={{...state, updateFilterProduct, handelGridView, handelListView, getSelectValue}} >
+    return <FilterProductContext.Provider value={{
+        ...state, 
+        updateFilterProduct, 
+        handelGridView, 
+        handelListView, 
+        getSelectValue,
+        clearFilter
+        }} >
         { children }
     </FilterProductContext.Provider>
 
