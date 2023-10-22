@@ -8,6 +8,8 @@ export const initialState = {
     filters: {
         text: "",
         category: "all",
+        company: "all",
+        color: "all"
     }
 }
 
@@ -75,7 +77,8 @@ export const reduce = (state, action) => {
         case "UPDATE_FILTER_PRODUCT":
             let { all_products } = state
             let tempSearchProduct = [...all_products]
-            const { text, category } = state.filters
+            const { text, category, company, color } = state.filters
+           
 
             if(text){
                 tempSearchProduct = tempSearchProduct.filter((product) => {
@@ -85,31 +88,18 @@ export const reduce = (state, action) => {
             if(category !== "all") {
                 tempSearchProduct = tempSearchProduct.filter((product) => product.category === category)
             }
-              
-        return {
-            ...state,
-            filter_products: tempSearchProduct
-            }
-        case "COMPANY_SELECT_VALUE":
-            let componyName;
-            const company  = action.payload
-            componyName = [...state.all_products]
-
             if(company !== "all"){
-                componyName = componyName.filter((curElem) => curElem.company === company)
+                tempSearchProduct = tempSearchProduct.filter((curElem) => curElem.company.toLowerCase() === company.toLowerCase())
+            }  
+            if(color !== 'all') {
+                tempSearchProduct = tempSearchProduct.filter((curElem) => curElem.colors.includes(color) )
             }
+
             return {
                 ...state,
-                filter_products: componyName
+                filter_products: tempSearchProduct
             }
-        case  "COLOR_BY_PRODUCT":
-            let colorFilerProduct;
-            let productColor  = [...state.all_products]
-            colorFilerProduct = productColor.filter((curElem) => curElem.colors.includes(action.payload) )
-            return {
-                ...state,
-                filter_products: colorFilerProduct
-            }
+ 
         default:
             return state;
     }

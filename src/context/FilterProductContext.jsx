@@ -25,21 +25,8 @@ const FilterProductProvide = ({children}) => {
     }
 
 
-    // sort company value
-    const getCompanySelectValue = (e) => {
-        let val = e.target.value
-        dispatch({ type: "COMPANY_SELECT_VALUE", payload: val })
-    }
-
-    // product color filter settings
-    const colorHandler = (color) => {
-        dispatch({ type: "COLOR_BY_PRODUCT", payload: color })
-    }
-
-
     // get search value
     const updateFilterProduct = (e) => {
-        e.preventDefault()
         let name = e.target.name;
         let value = e.target.value;
         dispatch({ type: "UPDATE_FILTER_PRODUCT_VALUE", payload: { name, value } })
@@ -47,8 +34,11 @@ const FilterProductProvide = ({children}) => {
 
     useEffect(() => {
         dispatch({ type: "UPDATE_FILTER_PRODUCT" })
+    },[state.filters])
+
+    useEffect(() => {
         dispatch({ type: "SORTING_PRODUCT", payload: products })
-    },[state.sort_value, state.filters])
+    },[state.sort_value])
 
 
     useEffect(() => {
@@ -56,8 +46,7 @@ const FilterProductProvide = ({children}) => {
     },[products])
 
 
-    return <FilterProductContext.Provider value={{...state, 
-        colorHandler, getCompanySelectValue, updateFilterProduct, handelGridView, handelListView, getSelectValue}} >
+    return <FilterProductContext.Provider value={{...state, updateFilterProduct, handelGridView, handelListView, getSelectValue}} >
         { children }
     </FilterProductContext.Provider>
 
