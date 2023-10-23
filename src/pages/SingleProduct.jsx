@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../context/ProductContext";
 import FormatPrice from '../components/Utils/FormatPrice'
-
-
 import MyImage from "../components/Utils/MyImage"; 
-import Star from "../components/Utils/Star";
-import Color from "../components/Utils/Color";
+import Star from "../components/Utils/Star"; 
 import CartQtyToggle from "../components/Utils/CartQtyToggle";
 
 const API = "https://api.pujakaitem.com/api/products"
@@ -15,8 +12,12 @@ const API = "https://api.pujakaitem.com/api/products"
 
 
 const SingleProduct = () => {
-
-    const { getSingleProduct , singleProduct, isSingleLoading } = useProductContext()
+    const {
+        getSingleProduct,
+        singleProduct, 
+        isSingleLoading 
+    } = useProductContext()
+    
     const { productId } = useParams()
 
     const {
@@ -63,8 +64,7 @@ const SingleProduct = () => {
                                 <p className="text-[17px] font-poppins text-para-color mb-[12px] " >{description}</p>
                                 <p className="text-[20px] font-poppins font-medium text-title-color " >Brand: {company}</p>
 
-                                <Color singleProduct={singleProduct} /> 
-
+                              
                                 <CartQtyToggle singleProduct={singleProduct} /> 
                             </div>
                         </div>

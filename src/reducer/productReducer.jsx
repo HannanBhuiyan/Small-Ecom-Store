@@ -48,7 +48,7 @@ export const reduce = (state, action) => {
                 ...state,
                 isSingleLoading: false,
                 isSingleError: true,
-            } 
+            }  
         default:
             return state;
     }

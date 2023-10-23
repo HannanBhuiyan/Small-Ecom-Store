@@ -118,7 +118,7 @@ const ProductSidebar = () => {
                     </ul>
                 </div>
                 <div className="price_range mb-[30px]">
-                <   h2 className="text-[22px] text-title-color font-poppins mb-2 font-semibold" >Price</h2>
+                <h2 className="text-[22px] text-title-color font-poppins mb-2 font-semibold" >Price</h2>
                     <p><FormatPrice price={price} />  </p>
                     <input type="range" 
                     name="price" 

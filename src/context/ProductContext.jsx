@@ -42,14 +42,12 @@ const ProductProvider = ({ children }) => {
         }
     } 
 
-   
+
     useEffect(() => { 
         getProducts() 
     },[])
    
 
-
- 
 
     return <ProductContent.Provider value={{ ...state, getSingleProduct }} >
             { children } 
