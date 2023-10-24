@@ -8,8 +8,7 @@ import { useCartContext } from "../../context/cartContext";
 
 const Header = () => {
 
-    const { cart } = useCartContext()
-
+    const { total_item } = useCartContext()
 
     return(
         <>
@@ -42,13 +41,11 @@ const Header = () => {
                                     <li>
                                         <NavLink to="/contact" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium max-xl:text-[16px] text-[17px]  py-3 px-7 max-xl:px-5 rounded-md' : 'font-medium max-xl:text-[16px] text-[17px]  py-3 px-7 max-xl:px-5 rounded-md'} >Contact</NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/login" className=" hover:bg-black transition duration-500 font-medium bg-common-color max-xl:text-[16px] text-[17px]  py-[10px] text-white px-7 rounded-md " >Login</NavLink>
-                                    </li>
+                                    
                                     <li className="flex items-center">
                                         <NavLink to="/cart" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : ' font-medium text-[17px] py-3 px-7 rounded-md'} >
                                            <div className="flex relative">
-                                            <span className=" absolute top-[-17px] right-[-14px] bg-common-color w-[25px] h-[25px] text-white text-center rounded-[30px] text-[12px] leading-[25px] " >{cart ? cart.length : 0 }</span>
+                                            <span className=" absolute top-[-17px] right-[-14px] bg-common-color w-[25px] h-[25px] text-white text-center rounded-[30px] text-[12px] leading-[25px] " >{total_item ? total_item : 0 }</span>
                                            <FontAwesomeIcon icon={faCartShopping} />
                                            </div>
                                         </NavLink>

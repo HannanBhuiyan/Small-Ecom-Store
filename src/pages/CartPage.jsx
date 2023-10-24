@@ -11,27 +11,18 @@ import FormatPrice from '../components/Utils/FormatPrice'
 
 const CartPage = () => {
 
-    const { modal, stock, showModalPopup, cancelModalPopup , cart, deleteCartItem } = useCartContext()
-    const [amount, setCount] = useState(1)
-   
-
-    const handelIncement = () => {
-        if(amount === stock){
-            alert("Complete product limits")
-        }
-        setCount(prevCount => prevCount + 1)
-    }
-
-    const handelDecrement = () => {
-        if(amount > 1){
-            setCount(prevCount => prevCount - 1)
-        }
-        else {
-            alert("Not accepted")
-        }
-    }
-
-
+    const { modal, stock, 
+        showModalPopup, 
+        cancelModalPopup ,
+        cart, 
+        deleteCartItem, 
+        handleIncementAmount,
+        handleDecrementAmount,
+        totle_amount,
+        shipping_fee,
+        clearCartItem
+        } = useCartContext()
+ 
     return(
         <>
             <div className="cart_section my-[100px]">
@@ -42,8 +33,9 @@ const CartPage = () => {
                             <p className="text-[20px] font-poppins "  >There are 3 products in your cart</p>
                         </div>
                         <div className="flex max-[1599px]:flex-wrap mx-auto gap-7 "> 
-
+                                   
                             <div className="cart_left lg:w-9/12 w-full"> 
+                          
                                 <div className="relative overflow-x-auto">
                                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 border ">
                                         <thead className="bg-[#ececec]" >
@@ -56,6 +48,9 @@ const CartPage = () => {
                                             </tr>
                                         </thead> 
                                         <tbody>
+                                        {
+                                        cart.length === 0 ? <h2 className="text-[30px] font-semibold  py-4 mt-4 pl-3 font-poppins text-red-400 mb-4 " >Cart item not found</h2> :  ''
+                                    }
                                             { cart && cart.map((curEle, index) => {
                                                 let totalAmount = curEle.price * curEle.amount 
                                               
@@ -82,8 +77,8 @@ const CartPage = () => {
                                                                 <span>{curEle.amount}</span>
                                                             </div>
                                                             <div className="logic_box pr-3 py-1">
-                                                                <div className="increment cursor-pointer hover:text-common-color duration-300 "> <FontAwesomeIcon onClick={handelIncement} icon={faChevronUp} /> </div>
-                                                                <div className="decrement cursor-pointer hover:text-common-color duration-300"> <FontAwesomeIcon onClick={handelDecrement} icon={faChevronDown} /></div>
+                                                                <div className="increment cursor-pointer hover:text-common-color duration-300 "> <FontAwesomeIcon onClick={() => {handleIncementAmount(curEle.id)}} icon={faChevronUp} /> </div>
+                                                                <div className="decrement cursor-pointer hover:text-common-color duration-300"> <FontAwesomeIcon onClick={() => {handleDecrementAmount(curEle.id)}} icon={faChevronDown} /></div>
                                                             </div> 
                                                         </div>
                                                     </td>
@@ -108,7 +103,7 @@ const CartPage = () => {
                                                 <span>Subtotal </span>
                                             </div>
                                             <div className="text-[17px] font-poppins font-medium ">
-                                                $1000
+                                                <FormatPrice price={totle_amount} /> 
                                             </div>
                                         </li>
                                         <li className="flex justify-between items-center  border-b pb-5 mb-5 "> 
@@ -116,7 +111,7 @@ const CartPage = () => {
                                                 <span>Shipping </span>
                                             </div>
                                             <div className="text-[17px] font-poppins font-medium ">
-                                                $1000
+                                                <FormatPrice price={shipping_fee} /> 
                                             </div>
                                         </li>
                                         <li className="flex justify-between items-center  border-b pb-5 mb-5 "> 
@@ -124,7 +119,7 @@ const CartPage = () => {
                                                 <span>Total </span>
                                             </div>
                                             <div className="text-[17px] font-poppins font-medium ">
-                                                $1000
+                                                <FormatPrice price={totle_amount + shipping_fee} /> 
                                             </div>
                                         </li>
                                         <li className="text-center">
@@ -138,10 +133,10 @@ const CartPage = () => {
                         <div className="lg:w-9/12 w-full">
                             <div className="button_group lg:flex flex-wrap lg:justify-between justify-center ">
                                 <div className="btn_left text-center lg:text-start">
-                                    <button className="bg-common-color text-white font-poppins px-5 rounded-md mt-4 hover:bg-black duration-300 py-3" > <FontAwesomeIcon className="pr-2"  icon={faArrowLeftLong} />  Continue Shopping</button>
+                                    <button className="bg-common-color text-white font-poppins px-5 rounded-md mt-4 hover:bg-black duration-300 py-3" > <FontAwesomeIcon className="pr-2"  icon={faArrowLeftLong} /> <Link to="/product"> Continue Shopping</Link> </button>
                                 </div>
                                 <div className="btn_riht pr-5 text-center lg:text-start ">
-                                    <button className="bg-common-color text-white font-poppins px-5 rounded-md mt-4 hover:bg-black duration-300 py-3" > <FontAwesomeIcon className="pr-2"  icon={faTrash} />  Clear Cart</button>
+                                    <button onClick={clearCartItem}  className="bg-common-color text-white font-poppins px-5 rounded-md mt-4 hover:bg-black duration-300 py-3" > <FontAwesomeIcon className="pr-2"  icon={faTrash} />  Clear Cart</button>
                                 </div>
                             </div>
                         </div> 

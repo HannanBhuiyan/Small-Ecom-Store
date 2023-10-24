@@ -13,12 +13,16 @@ const CartQtyToggle = ({ singleProduct }) => {
     const [amount, setCount] = useState(1)
     const [activeColor, setActiveColor] = useState(colors?.[0])
 
+    console.log(stock)
 
     const handelIncement = () => {
-        if(amount === stock){
+        if(amount >= stock){
+            setCount(stock)
             alert("Complete product limits")
         }
-        setCount(prevCount => prevCount + 1)
+        else {
+            setCount(prevCount => prevCount + 1)
+        }
     }
 
     const handelDecrement = () => {
@@ -26,7 +30,7 @@ const CartQtyToggle = ({ singleProduct }) => {
             setCount(prevCount => prevCount - 1)
         }
         else {
-            alert("Not accepted")
+            setCount(1)
         }
     }
  

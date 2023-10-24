@@ -30,13 +30,37 @@ const CartProvider = ({ children }) => {
         dispatch({type: "DELETE_ITEM", payload: id})
     }
 
+    // cart increment
+    const handleIncementAmount = (id) => {
+        dispatch({ type: "INCREMENT_AMOUNT", payload: id})
+    }
+    // cart decrement
+    const handleDecrementAmount = (id) => {
+        console.log(id)
+        dispatch({ type: "DECREMENT_AMOUNT", payload: id })
+    }
+
+    // clear cart all item
+    const clearCartItem = () => {
+        dispatch({ type: "CLEAR_ALL_ITEM" })
+    }
+   
 
     useEffect(() => {
+        dispatch({ type: "TOTAL_CART_AMOUNT_AND_SUBTOTAL" })
+
         localStorage.setItem('cartStore', JSON.stringify(state.cart))
     },[state.cart])
 
 
-    return <CartContext.Provider value={{ ...state, deleteCartItem, addToCartHandler, showModalPopup,  cancelModalPopup }} >
+    return <CartContext.Provider value={{ ...state, 
+    deleteCartItem, 
+    addToCartHandler,
+    showModalPopup, 
+    handleIncementAmount,
+    handleDecrementAmount,
+    clearCartItem,
+    cancelModalPopup }} >
         {children}
     </CartContext.Provider>
 
