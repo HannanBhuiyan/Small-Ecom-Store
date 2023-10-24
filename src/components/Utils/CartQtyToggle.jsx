@@ -6,9 +6,8 @@ import { useCartContext } from "../../context/cartContext";
 
 const CartQtyToggle = ({ singleProduct }) => {
 
-    const { addToCartHandler, cart } = useCartContext()
-  
-    // console.log(cart)
+    const { addToCartHandler } = useCartContext()
+ 
     
     const { id, stock, colors } = singleProduct
     const [amount, setCount] = useState(1)

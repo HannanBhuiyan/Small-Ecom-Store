@@ -1,5 +1,6 @@
-import { createContext, useContext, useReducer } from "react"; 
+import { createContext, useContext, useEffect, useReducer } from "react"; 
 import { initialState, reduce } from "../reducer/cartReducer";
+
 
 
 
@@ -24,8 +25,18 @@ const CartProvider = ({ children }) => {
         dispatch({ type: "MODAL_POPUP_HIDE" })
     }
 
+    // delete item
+    const deleteCartItem = (id) => {
+        dispatch({type: "DELETE_ITEM", payload: id})
+    }
 
-    return <CartContext.Provider value={{ ...state, addToCartHandler, showModalPopup,  cancelModalPopup }} >
+
+    useEffect(() => {
+        localStorage.setItem('cartStore', JSON.stringify(state.cart))
+    },[state.cart])
+
+
+    return <CartContext.Provider value={{ ...state, deleteCartItem, addToCartHandler, showModalPopup,  cancelModalPopup }} >
         {children}
     </CartContext.Provider>
 

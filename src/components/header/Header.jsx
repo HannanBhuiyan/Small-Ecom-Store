@@ -4,8 +4,13 @@ import logo from '../../assets/images/logo.png'
 import './Header.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
+import { useCartContext } from "../../context/cartContext";
 
 const Header = () => {
+
+    const { cart } = useCartContext()
+
+
     return(
         <>
             <div className="header_section bg-second-color py-3">
@@ -43,7 +48,7 @@ const Header = () => {
                                     <li className="flex items-center">
                                         <NavLink to="/cart" className={(activeColor) => activeColor.isActive === true ? 'active-menu font-medium text-[17px] py-3 px-7 rounded-md' : ' font-medium text-[17px] py-3 px-7 rounded-md'} >
                                            <div className="flex relative">
-                                            <span className=" absolute top-[-17px] right-[-14px] bg-common-color w-[25px] h-[25px] text-white text-center rounded-[30px] text-[12px] leading-[25px] " >9+</span>
+                                            <span className=" absolute top-[-17px] right-[-14px] bg-common-color w-[25px] h-[25px] text-white text-center rounded-[30px] text-[12px] leading-[25px] " >{cart ? cart.length : 0 }</span>
                                            <FontAwesomeIcon icon={faCartShopping} />
                                            </div>
                                         </NavLink>
