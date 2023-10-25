@@ -112,7 +112,7 @@ export const reduce = (state, action) => {
             }
  
         case "CLEAR_FILER":
-            window.location.reload(false)
+            
             return {
                 ...state,
                 sort_value: "featured",
@@ -122,8 +122,8 @@ export const reduce = (state, action) => {
                     category: "all",
                     company: "all",
                     color: "all",
-                    price: maxPrice,
-                    maxPrice:maxPrice, 
+                    price: state.filters.maxPrice,
+                    maxPrice: state.filters.maxPrice, 
                     minPrice: 0
                 }
             }

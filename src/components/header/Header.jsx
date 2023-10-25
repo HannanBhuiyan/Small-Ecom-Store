@@ -20,13 +20,7 @@ const Header = () => {
                                 <Link to="/">
                                     <img src={logo} alt="logo" />
                                 </Link>
-                            </div>
-                            <div className="search_box relative">
-                                <input className="w-[500px] max-xl:w-[300px] border-2 border-second-color py-2 px-4 focus:outline-none focus:border-common-color rounded-md " type="text" placeholder="Search for items" />
-                                <div className="search_icon absolute top-[10px] right-[15px] text-second-color">
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                                </div>
-                            </div>
+                            </div> 
                             <div className="header_menu">
                                 <ul className="flex">
                                     <li>
