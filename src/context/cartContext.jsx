@@ -34,6 +34,7 @@ const CartProvider = ({ children }) => {
     const handleIncementAmount = (id) => {
         dispatch({ type: "INCREMENT_AMOUNT", payload: id})
     }
+
     // cart decrement
     const handleDecrementAmount = (id) => {
         console.log(id)
@@ -44,7 +45,6 @@ const CartProvider = ({ children }) => {
     const clearCartItem = () => {
         dispatch({ type: "CLEAR_ALL_ITEM" })
     }
-   
 
     useEffect(() => {
         dispatch({ type: "TOTAL_CART_AMOUNT_AND_SUBTOTAL" })

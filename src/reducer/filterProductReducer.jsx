@@ -112,7 +112,7 @@ export const reduce = (state, action) => {
             }
  
         case "CLEAR_FILER":
-            
+
             return {
                 ...state,
                 sort_value: "featured",

@@ -15,8 +15,7 @@ const ProductGridView = ({ filter_products, isLoading }) => {
         {
             filter_products.map((product, index) => {
                 const { id, name, price, image, category } = product
-                return(
-                   
+                return(  
                     <Link to={`/single-product/${id}`} key={index}>
                         <div className="feature_product_ite rounded-md bg-second-color m-3 p-6 max-xl:p-[20px]  relative">
                             <div className="img_box overflow-hidden">
@@ -32,9 +31,8 @@ const ProductGridView = ({ filter_products, isLoading }) => {
                             <div className="category absolute max-[767px]:top-[40px] max-[767px]:right-[40px] top-[45px] right-[45px] bg-white px-8 py-1 rounded-[30px] font-poppins ">
                                 <span>{category}</span>
                             </div>
-                        </div> 
-                    </Link> 
-                   
+                        </div>
+                    </Link>
                 )
             })
         }

@@ -25,7 +25,7 @@ export const reduce = (state, action) => {
             const {id, amount, activeColor, stock, singleProduct } = action.payload
 
             let existingproduct = state.cart.find((curItem) => curItem.id === id + activeColor )
-        
+
             if(existingproduct) {
                 let updatedPro = state.cart.map((curEle) => {
                     if(curEle.id === id + activeColor){
